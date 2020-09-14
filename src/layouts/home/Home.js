@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import './Home.scss';
 
 import Button from '../../components/button/Button';
@@ -17,7 +18,9 @@ function Home() {
           <Version />
           </div>
         <div className="home__button">
-          <Button />
+          <Link to='funds'>
+            <Button text="View App" />
+          </Link>
         </div>
         <Footer />
       </div>

@@ -1,10 +1,11 @@
 import React from 'react';
 import './Button.scss';
 
-function Button() {
+function Button(props) {
+  const button = props.text ? <button>{props.text}</button> : '';
   return (
-    <div className="Button">
-      TODO: button
+    <div className="button">
+      {button}
     </div>
   );
 }

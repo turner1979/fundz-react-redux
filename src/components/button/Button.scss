@@ -1,0 +1,22 @@
+@import "../../styles/styles.scss";
+
+.button {
+  width: 100%;
+
+  button {
+    width: 100%;
+    padding: 12px 16px;
+    outline: none;
+    border: none;
+    background: $colourMineShaft;
+    border-radius: 4px;
+    @include fdz-font(14, $colourWhite);
+  }
+
+  &:hover {
+    button {
+      letter-spacing: 2px;
+    }
+  }
+
+}

@@ -1,0 +1,17 @@
+@import "../../styles/styles.scss";
+
+.footer {
+  text-align: center;
+
+  p, a {
+    @include fdz-font(14);
+    margin-bottom: 0;
+  }
+
+  a {
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
