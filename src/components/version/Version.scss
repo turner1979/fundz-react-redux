@@ -1,0 +1,22 @@
+@import "../../styles/styles.scss";
+
+.version {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 8px;
+  padding: 8px;
+  background: $colourWhite;
+
+  .version__logo {
+    img {
+      width: 96px;
+    }
+  }
+
+  p {
+    @include fdz-font(14);
+  }
+
+}
