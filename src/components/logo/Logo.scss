@@ -1,0 +1,35 @@
+@import "../../styles/styles.scss";
+
+.logo {
+
+  .logo__text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+      @include fdz-font(16, $colourMineShaft, 600);
+      margin: 0;
+    }
+  }
+
+  .logo__colours {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .logo__colour {
+      width: 20px;
+      height: 4px;
+    }
+  }
+
+  &.logo--alt {
+    .logo__text {
+      h1 {
+        @include fdz-font(32, $colourMineShaft, 600);
+      }
+    }
+  }
+
+}

@@ -1,12 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import { Router, Route, Switch } from 'react-router';
+import './index.scss';
+import Home from './layouts/home/Home';
+import Funds from './layouts/funds/Funds';
 import * as serviceWorker from './serviceWorker';
+
+const createHistory = require("history").createBrowserHistory;
+const history = createHistory();
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router history={history}>
+      <Switch>
+         <Route exact path="/" component={Home} />
+         <Route path="/funds" component={Funds} />
+      </Switch>
+   </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );

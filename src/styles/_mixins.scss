@@ -1,0 +1,74 @@
+@function pxToRem($pixels, $context: 16) {
+  @return #{$pixels/$context}rem;
+}
+
+@mixin fdz-font($fontSize:16, $fontColour: $colourMineShaft, $fontWeight: 300){
+  font-family: "Montserrat", arial;
+  font-size: #{$fontSize}px;
+  font-size: pxToRem($fontSize);
+  font-weight: $fontWeight;
+  color: $fontColour;
+  letter-spacing: 1px;
+}
+
+@mixin messageStyle($colour: $colourGallery) {
+  background: $colour;
+  padding: 16px;
+  border-radius: 4px;
+
+  p {
+    @include fdz-font(14, darken($colour, 75%));
+    margin: 0;
+    + p {
+      margin-top: 16px;
+    }
+  }
+}
+
+@mixin pillStyle($colour: $base) {
+  background: $colour;
+  padding: 4px 16px;
+  border-radius: 32px;
+
+  p {
+    @include fdz-font(14, darken($colour, 75%));
+    margin: 0;
+  }
+}
+
+@mixin breakpoint($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media #{inspect(map-get($breakpoints, $breakpoint))} {
+      @content;
+    }
+  }
+}
+
+@mixin formInput() {
+  input[type=text] {
+    width: 100%;
+    border: none;
+    background: $colourGallery;
+    border-radius: 4px;
+    height: 48px;
+    padding: 4px 16px 0;
+    @include fdz-font(14);
+
+    &:focus {
+      outline: none;
+    }
+
+  }
+
+  &.invalid {
+    input[type=text] {
+      background: $colourWatusi;
+    }
+  }
+
+  &.valid {
+    input[type=text] {
+      background: $colourReef;
+    }
+  }
+}

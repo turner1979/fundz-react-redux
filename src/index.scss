@@ -1,0 +1,12 @@
+// Import normalize to standardise styles cross browser
+@import '~normalize.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100vh;
+}
+
+@import "./styles/styles.scss";
