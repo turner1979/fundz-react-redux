@@ -13,8 +13,9 @@ export const updateFund = () => {
   }
 }
 
-export const deleteFund = () => {
+export const deleteFund = (fund) => {
   return {
-    type: DELETE_FUND
+    type: DELETE_FUND,
+    payload: fund
   }
 }

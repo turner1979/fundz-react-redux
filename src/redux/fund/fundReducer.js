@@ -10,7 +10,11 @@ export const fundReducer = (state = initialState, action) => {
       ...state,
       funds: [...state.funds, action.payload]
     }
-    case DELETE_FUND: return state; // TODO delete
+    case DELETE_FUND:
+      return {
+        ...state,
+        funds: state.funds.filter((fund) => fund.id !== action.payload.id )
+      }
     case UPDATE_FUND: return state; // TODO: update
     default: return state;
   }
