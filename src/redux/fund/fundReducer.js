@@ -6,7 +6,10 @@ const initialState = {
 
 export const fundReducer = (state = initialState, action) => {
   switch(action.type) {
-    case ADD_FUND: return state; // TODO: add
+    case ADD_FUND: return {
+      ...state,
+      funds: [...state.funds, action.payload]
+    }
     case DELETE_FUND: return state; // TODO delete
     case UPDATE_FUND: return state; // TODO: update
     default: return state;

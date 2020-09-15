@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addFund, deleteFund, updateFund } from '../../redux';
+import { addFund } from '../../redux';
 import './Funds.scss';
 import Footer from '../../components/footer/Footer';
 import FundCard from '../../components/fundCard/fundCard';
@@ -10,20 +10,29 @@ import ContentContainer from '../../components/contentContainer/ContentContainer
 import Icon from '../../components/icon/Icon';
 import Version from '../../components/version/Version';
 
-function Funds(props) {
+const Funds = (props) => {
   const history = useHistory();
   const onBackClick = () => {
     history.push('/');
   }
   const onAddFundClick = () => {
-    props.addFund()
+    props.addFund({
+      id: Math.random().toString(36).substr(2),
+      colour: { name: 'redSalsa', colour: '#F94144' },
+      name: 'New Fund',
+      current: 0,
+      target: 1000
+    })
   }
+
   return (
     <div className="funds">
       <Header />
       <ContentContainer>
 
         <Version />
+
+        {/* TODO: create funds controls component */}
         <div className="funds__controls">
           <div onClick={() => onBackClick() }>
             <Icon iconClass="fas fa-chevron-left" />
@@ -36,10 +45,7 @@ function Funds(props) {
         {/* TODO: modal */}
         {/* TODO: loading icon  */}
         <div className="funds__grid">
-          <FundCard />
-          <FundCard />
-          <FundCard />
-          <FundCard />
+          {props.funds.map((fund) => { return <FundCard key={fund.id} fund={fund} /> })}
         </div>
 
         <Footer />
@@ -56,8 +62,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addFund: () => {
-      dispatch(addFund())
+    addFund: (fund) => {
+      dispatch(addFund(fund))
     }
   }
 }

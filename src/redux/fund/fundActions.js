@@ -1,8 +1,9 @@
 import { ADD_FUND, DELETE_FUND, UPDATE_FUND } from './fundTypes';
 
-export const addFund = () => {
+export const addFund = (fund) => {
   return {
-    type: ADD_FUND
+    type: ADD_FUND,
+    payload: fund
   }
 }
 
