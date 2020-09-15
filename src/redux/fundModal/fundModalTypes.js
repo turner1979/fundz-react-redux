@@ -1,0 +1,2 @@
+export const OPEN_FUND_MODAL = 'OPEN_FUND_MODAL';
+export const CLOSE_FUND_MODAL = 'CLOSE_FUND_MODAL';

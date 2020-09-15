@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addFund } from '../../redux';
+import { addFund, openFundModal } from '../../redux';
 import './Funds.scss';
 import Footer from '../../components/footer/Footer';
 import FundCard from '../../components/fundCard/fundCard';
@@ -16,6 +16,7 @@ const Funds = (props) => {
     history.push('/');
   }
   const onAddFundClick = () => {
+    props.openFundModal();
     props.addFund({
       id: Math.random().toString(36).substr(2),
       colour: { name: 'redSalsa', colour: '#F94144' },
@@ -64,6 +65,9 @@ const mapDispatchToProps = dispatch => {
   return {
     addFund: (fund) => {
       dispatch(addFund(fund))
+    },
+    openFundModal: () => {
+      dispatch(openFundModal())
     }
   }
 }
