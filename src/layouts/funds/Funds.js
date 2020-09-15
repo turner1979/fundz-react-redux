@@ -9,6 +9,7 @@ import Header from '../../components/header/Header';
 import ContentContainer from '../../components/contentContainer/ContentContainer';
 import Icon from '../../components/icon/Icon';
 import Version from '../../components/version/Version';
+import Modal from '../../components/modal/Modal';
 
 const Funds = (props) => {
   const history = useHistory();
@@ -32,6 +33,11 @@ const Funds = (props) => {
       <ContentContainer>
 
         <Version />
+        {
+          props.fundModal.showModal
+          ? <Modal>content</Modal>
+          : null
+        }
 
         {/* TODO: create funds controls component */}
         <div className="funds__controls">
@@ -57,7 +63,8 @@ const Funds = (props) => {
 
 const mapStateToProps = state => {
   return {
-    funds: state.funds.funds
+    funds: state.funds.funds,
+    fundModal: state.fundModal
   }
 }
 
