@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import './AddFundForm.scss';
 import Button from '../button/Button';
+import Message from '../message/Message';
 import { COLOURS } from '../../config/colours';
 import FundColourChooser from '../fundColourChooser/FundColourChooser';
 import { addFund } from '../../redux';
@@ -11,6 +12,11 @@ const AddFundForm = (props) => {
     fundName: '',
     fundTarget: '',
     fundColour: COLOURS[0]
+  });
+
+  const [errors, setErrors] = useState({
+    fundName: [],
+    fundTarget: []
   });
 
   const handleChange = (e) => {
@@ -27,21 +33,39 @@ const AddFundForm = (props) => {
     })
   }
 
+  const validate = () => {
+    let errors = {};
+    if (form.fundName.length < 2) {
+      errors.fundName = ['Must be at least 2 characters long.'];
+    }
+    if (form.fundTarget.length < 2) {
+      errors.fundTarget = ['Must be at least 2 characters long.'];
+    }
+    if (isNaN(form.fundTarget)) {
+      errors.fundTarget = ['Must be number (whole numbers only).'];
+    }
+    return errors;
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.addFund({
-      id: Math.random().toString(36).substr(2),
-      colour: form.fundColour,
-      name: form.fundName,
-      current: 0,
-      target: form.fundTarget
-    })
+    const errors = validate();
+    if (Object.keys(errors).length === 0) {
+      props.addFund({
+        id: Math.random().toString(36).substr(2),
+        colour: form.fundColour,
+        name: form.fundName,
+        current: 0,
+        target: form.fundTarget
+      })
+    } else {
+      setErrors(errors);
+    }
   }
 
   return (
     <div className="add-fund-form">
-      <form autoComplete="off" onSubmit={(e) => handleSubmit(e) } >
-        { JSON.stringify(form) }
+      <form autoComplete="off" onSubmit={(e) => handleSubmit(e) }>
         <p><strong>Add New Fund</strong></p>
         <div className="add-fund-form__row">
             <input
@@ -51,7 +75,7 @@ const AddFundForm = (props) => {
               maxLength="20"
               value={form.fundName}
               onChange={(e) => handleChange(e) } />
-            {/* TODO: error message */}
+            { errors.fundName ? <Message options={{ text: errors.fundName, type: 'error' }}/> : '' }
         </div>
 
         <div className="add-fund-form__row">
@@ -62,7 +86,7 @@ const AddFundForm = (props) => {
               maxLength="12"
               value={form.fundTarget}
               onChange={(e) => handleChange(e) } />
-            {/* TODO: error message */}
+            { errors.fundTarget ? <Message options={{ text: errors.fundTarget, type: 'error' }}/> : '' }
         </div>
         <div className="add-fund-form__row">
           <FundColourChooser activeColour={ form.fundColour } selectColour={ handleColourChange }/>
