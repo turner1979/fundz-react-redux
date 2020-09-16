@@ -5,7 +5,7 @@ import Button from '../button/Button';
 import Message from '../message/Message';
 import { COLOURS } from '../../config/colours';
 import FundColourChooser from '../fundColourChooser/FundColourChooser';
-import { addFund } from '../../redux';
+import { addFund, closeFundModal } from '../../redux';
 
 const AddFundForm = (props) => {
   const [form, setForm] = useState({
@@ -57,10 +57,20 @@ const AddFundForm = (props) => {
         name: form.fundName,
         current: 0,
         target: form.fundTarget
-      })
+      });
+      resetForm();
+      props.closeFundModal();
     } else {
       setErrors(errors);
     }
+  }
+
+  const resetForm = () => {
+    setForm({
+      fundName: '',
+      fundTarget: '',
+      fundColour: COLOURS[0]
+    })
   }
 
   return (
@@ -107,6 +117,9 @@ const mapDispatchToProps = dispatch => {
   return {
     addFund: (fund) => {
       dispatch(addFund(fund))
+    },
+    closeFundModal: () => {
+      dispatch(closeFundModal())
     }
   }
 }
