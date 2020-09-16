@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { deleteFund } from '../../redux';
-import './fundCard.scss';
+import './FundCard.scss';
 
 const FundCard = (props) => {
   const fund = props.fund ? props.fund : null;

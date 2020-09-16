@@ -1,0 +1,22 @@
+@import "../../styles/styles.scss";
+
+.add-fund-form {
+
+  p {
+    @include fdz-font(14);
+    margin: 0 0 16px 0;
+  }
+
+  .add-fund-form__row {
+    margin-bottom: 16px;
+    min-width: 250px;
+    @include formInput();
+  }
+
+  @include breakpoint('small') {
+    .add-fund-form__row {
+      min-width: 450px;
+    }
+  }
+
+}
