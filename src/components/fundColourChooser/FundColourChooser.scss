@@ -1,0 +1,23 @@
+@import "../../styles/styles.scss";
+
+.fund-colour-chooser {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  .fund-colour-chooser__option {
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+    margin-right: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    i {
+      color: $colourWhite;
+    }
+  }
+
+}

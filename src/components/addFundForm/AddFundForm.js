@@ -2,22 +2,16 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import './AddFundForm.scss';
 import Button from '../button/Button';
+import { COLOURS } from '../../config/colours';
+import FundColourChooser from '../fundColourChooser/FundColourChooser';
 import { addFund } from '../../redux';
 
 const AddFundForm = (props) => {
   const [form, setForm] = useState({
     fundName: '',
-    fundTarget: ''
+    fundTarget: '',
+    fundColour: COLOURS[0]
   });
-  const onAddFundClick = () => {
-    props.addFund({
-      id: Math.random().toString(36).substr(2),
-      colour: { name: 'redSalsa', colour: '#F94144' },
-      name: 'New Fund',
-      current: 0,
-      target: 1000
-    })
-  }
 
   const handleChange = (e) => {
     setForm({
@@ -25,10 +19,29 @@ const AddFundForm = (props) => {
       [e.target.name]: e.target.value
     })
   }
+
+  const handleColourChange = (fundColour) => {
+    setForm({
+      ...form,
+      fundColour
+    })
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    props.addFund({
+      id: Math.random().toString(36).substr(2),
+      colour: form.fundColour,
+      name: form.fundName,
+      current: 0,
+      target: form.fundTarget
+    })
+  }
+
   return (
     <div className="add-fund-form">
-      {JSON.stringify(form)}
-      <form autoComplete="off">
+      <form autoComplete="off" onSubmit={(e) => handleSubmit(e) } >
+        { JSON.stringify(form) }
         <p><strong>Add New Fund</strong></p>
         <div className="add-fund-form__row">
             <input
@@ -52,11 +65,9 @@ const AddFundForm = (props) => {
             {/* TODO: error message */}
         </div>
         <div className="add-fund-form__row">
-          {/* TODO: add colours */}
+          <FundColourChooser activeColour={ form.fundColour } selectColour={ handleColourChange }/>
         </div>
-        <div onClick={() => { onAddFundClick() }}>
-          <Button text="Add" />
-        </div>
+        <Button text="Add" />
       </form>
     </div>
   )
