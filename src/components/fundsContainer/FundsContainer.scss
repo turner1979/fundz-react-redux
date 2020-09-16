@@ -1,1 +1,18 @@
 @import "../../styles/styles.scss";
+
+.funds-container {
+  display: grid;
+  column-gap: 16px;
+  row-gap: 16px;
+  margin-bottom: 32px;
+
+  @include breakpoint('small') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include breakpoint('medium-large') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+}
+

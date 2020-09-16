@@ -25,13 +25,8 @@ const Funds = (props) => {
     <div className="funds">
       <Header />
       <ContentContainer>
-
         <Version />
-        {
-          props.fundModal.showModal
-          ? <Modal><AddFundForm /></Modal>
-          : null
-        }
+        { props.fundModal.showModal ? <Modal><AddFundForm /></Modal> : '' }
 
         {/* TODO: create funds controls component */}
         <div className="funds__controls">
@@ -44,10 +39,7 @@ const Funds = (props) => {
         </div>
 
         {/* TODO: loading icon  */}
-        <div className="funds__grid">
-          <FundsContainer />
-        </div>
-
+        <FundsContainer />
         <Footer />
       </ContentContainer>
     </div>

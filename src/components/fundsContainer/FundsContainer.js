@@ -5,8 +5,8 @@ import FundCard from '../fundCard/FundCard';
 
 const FundsContainer = (props) => {
   return (
-    <div className="fundsContainer">
-      { props.funds ? props.funds.map((fund) => <FundCard key={fund.id} fund={fund} />) : null }
+    <div className="funds-container">
+      { props.funds ? props.funds.map((fund) => <FundCard className="fund-container__grid" key={fund.id} fund={fund} />) : null }
     </div>
   )
 }
