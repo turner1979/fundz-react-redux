@@ -1,0 +1,23 @@
+@import "../../styles/styles.scss";
+
+
+$error: $colourWatusi;
+$info: $colourFrenchPass;
+$success: $colourReef;
+
+.message {
+  @include messageStyle();
+
+  &.message--error {
+    @include messageStyle($error);
+  }
+
+  &.message--info {
+    @include messageStyle($info);
+  }
+
+  &.message--success {
+    @include messageStyle($success);
+  }
+
+}

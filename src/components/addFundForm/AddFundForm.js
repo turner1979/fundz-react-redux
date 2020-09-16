@@ -15,8 +15,8 @@ const AddFundForm = (props) => {
   });
 
   const [errors, setErrors] = useState({
-    fundName: [],
-    fundTarget: []
+    fundName: null,
+    fundTarget: null
   });
 
   const handleChange = (e) => {
