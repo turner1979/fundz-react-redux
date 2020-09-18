@@ -10,7 +10,7 @@ const FundsContainer = (props) => {
       {
         props.funds ? props.funds.map((fund) =>
           <FundCard className="fund-container__grid" key={fund.id} fund={fund}>
-            <FundProgress />
+            <FundProgress fund={fund} />
           </FundCard>
         ) : null
       }

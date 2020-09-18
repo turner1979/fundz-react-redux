@@ -1,0 +1,18 @@
+@import "../../styles/styles.scss";
+
+$base: $colourAstra;
+$inProgress: $colourFrenchPass;
+$complete: $colourReef;
+
+.fund-pill {
+  @include pillStyle();
+
+  &.fund-pill--in-progress {
+    @include pillStyle($inProgress);
+  }
+
+  &.fund-pill--complete {
+    @include pillStyle($complete);
+  }
+
+}
