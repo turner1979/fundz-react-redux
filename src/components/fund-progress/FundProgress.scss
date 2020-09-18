@@ -1,0 +1,41 @@
+@import "../../styles/styles.scss";
+
+$barHeight: 8px;
+
+.fund-progress {
+
+  p {
+    @include fdz-font(14);
+    margin: 0;
+  }
+
+  .fund-progress__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    p:nth-child(2) {
+      @include fdz-font(20, $colourMineShaft, 600);
+    }
+  }
+
+  .fund-progress__bar {
+    position: relative;
+    background: $colourSilver;
+    border-radius: $barHeight / 2;
+    height: $barHeight;
+    margin: 8px 0;
+
+    .fund-progress__bar-current {
+      border-radius: $barHeight / 2;
+      height: $barHeight;
+    }
+  }
+
+  .fund-progress__bottom {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+}

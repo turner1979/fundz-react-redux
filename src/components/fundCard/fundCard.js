@@ -30,7 +30,7 @@ const FundCard = (props) => {
         </div>
       </div>
 
-      <div className="fund-card__bottom">TODO: content</div>
+      <div className="fund-card__bottom">{props.children}</div>
     </div>
   )
 }

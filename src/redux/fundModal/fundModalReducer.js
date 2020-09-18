@@ -1,7 +1,7 @@
 import { OPEN_FUND_MODAL, CLOSE_FUND_MODAL } from "./fundModalTypes";
 
 const initialState = {
-  showModal: !false
+  showModal: false
 }
 export const fundModalReducer = (state = initialState, action) => {
   switch(action.type) {
